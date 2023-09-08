@@ -43,7 +43,7 @@ def main(
 
 # Define your PyTorch method
 def askModel(data):
-        prompts = [
+    prompts = [
         # For these prompts, the expected answer is the natural continuation of the prompt
 #         """\
 # import socket
