@@ -21,6 +21,9 @@ def predict():
     except Exception as e:
         return jsonify({"error": str(e)})
 
+@app.route('/random', methods=['GET'])
+def random():
+    return jsonify({"result": "random"})
 
 
 def main(
