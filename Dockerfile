@@ -22,7 +22,7 @@ RUN pip install -e .
 EXPOSE 3000
 
 RUN echo '#!/bin/sh' > /app/entrypoint.sh && \
-    echo 'torchrun --nproc_per_node 1 server.py --ckpt_dir /app/$MODEL/ --tokenizer_path /app/$MODEL/tokenizer.model --max_seq_len 128 --max_batch_size 4' >> /app/entrypoint.sh && \
+    echo 'torchrun --nproc_per_node 1 example_completion.py --ckpt_dir /app/$MODEL/ --tokenizer_path /app/$MODEL/tokenizer.model --max_seq_len 128 --max_batch_size 4' >> /app/entrypoint.sh && \
     chmod +x /app/entrypoint.sh
 
 # Set the entrypoint and default command
