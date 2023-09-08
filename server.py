@@ -5,7 +5,6 @@ from llama import Llama
 
 app = Flask(__name__)
 
-generator = 
 
 # Define a route to accept POST requests with input data
 @app.route('/predict', methods=['POST'])
