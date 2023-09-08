@@ -67,7 +67,7 @@ def main(
             max_seq_len=max_seq_len,
             max_batch_size=max_batch_size,
         )
-    app.run(debug=True, port=3000)
+    app.run(debug=True, port=80)
 
 # Define your PyTorch method
 
