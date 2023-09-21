@@ -1,0 +1,19 @@
+version: '3'
+services:
+  flask-app:
+    build: ./
+    container_name: my_cuda_app
+    ports:
+      - "5000:5000"
+    network_mode: host
+    environment:
+      - MODEL=CodeLlama-7b
+    volumes:
+      - ./CodeLlama-7b:/app/CodeLlama-7b
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['0']
+            capabilities: [gpu]

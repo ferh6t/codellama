@@ -46,7 +46,8 @@ def predict():
 
 @app.route('/random', methods=['GET'])
 def random():
-    return jsonify({"result": "random"})
+    print('hereee')
+    return  'asdasda'
 
 
 
@@ -67,11 +68,12 @@ def main(
             max_seq_len=max_seq_len,
             max_batch_size=max_batch_size,
         )
-    app.run(debug=True, port=80)
-
+    print('service has jsut started')
+    
 # Define your PyTorch method
-
 if __name__ == "__main__":
+    app.run( port=5000)
+
     parser = argparse.ArgumentParser(description="Sample Server Script")
 
     # Define command-line arguments
