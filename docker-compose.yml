@@ -4,7 +4,7 @@ services:
     build: ./
     container_name: my_cuda_app
     ports:
-      - "5000:5000"
+      - "80:5000"
     network_mode: host
     environment:
       - MODEL=CodeLlama-7b

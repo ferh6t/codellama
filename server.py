@@ -35,7 +35,7 @@ def predict():
     try:
         # Extract input data from the request
         data = request.get_json()
-
+	print(data['question'])
         # Call your PyTorch method here
         result = askModel(data['question'])
 
