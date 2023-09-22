@@ -5,7 +5,6 @@ from llama import Llama
 import argparse
 
 app = Flask(__name__)
-
 def askModel(data):
     prompts = [
         # For these prompts, the expected answer is the natural continuation of the prompt
@@ -35,7 +34,7 @@ def predict():
     try:
         # Extract input data from the request
         data = request.get_json()
-	print(data['question'])
+        print(data['question'])
         # Call your PyTorch method here
         result = askModel(data['question'])
 
@@ -52,7 +51,7 @@ def random():
 
 
 
-def main(
+def createGenerator(
     ckpt_dir: str,
     tokenizer_path: str,
     temperature: float = 0.2,
@@ -61,18 +60,18 @@ def main(
     max_batch_size: int = 4,
     max_gen_len: Optional[int] = None,
 ):
-
+    global generator 
     generator = Llama.build(
-            ckpt_dir=ckpt_dir,
-            tokenizer_path=tokenizer_path,
-            max_seq_len=max_seq_len,
-            max_batch_size=max_batch_size,
-        )
+        ckpt_dir=ckpt_dir,
+        tokenizer_path=tokenizer_path,
+        max_seq_len=max_seq_len,
+        max_batch_size=max_batch_size,
+    )
     print('service has jsut started')
     
 # Define your PyTorch method
 if __name__ == "__main__":
-    app.run( port=5000)
+    app.run( port=5000 )
 
     parser = argparse.ArgumentParser(description="Sample Server Script")
 
@@ -84,7 +83,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    main(
+    createGenerator(
         ckpt_dir=args.ckpt_dir,
         tokenizer_path=args.tokenizer_path,
         max_seq_len=args.max_seq_len,
