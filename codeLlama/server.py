@@ -53,7 +53,8 @@ def createCodeGenerator(
     max_batch_size: int = 4,
     max_gen_len: Optional[int] = None,
 ):
-    global generator 
+    global generator
+    print("creating the generator")
     generator = Llama.build(
         ckpt_dir=ckpt_dir,
         tokenizer_path=tokenizer_path,
