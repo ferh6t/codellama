@@ -26,17 +26,6 @@ def askCodeModel(data):
         print("\n==================================\n")
         return print(f"> {result['generation']}")
 
-def askChatModel(data):
-    dialogs: List[Dialog] = [
-        [{"role": "user", "content": data}] 
-    ]
-    results = text_generator.chat_completion(
-        dialogs,  # type: ignore
-        max_gen_len=max_gen_len,
-        temperature=temperature,
-        top_p=top_p,
-    )
-    return print(f"> {results[0]['generation']}")
 
 # Define a route to accept POST requests with input data
 @app.route('/predict', methods=['POST'])
@@ -53,17 +42,6 @@ def predict():
     except Exception as e:
         return jsonify({"error": str(e)})
 
-# Define a route to accept POST requests with input data
-@app.route('/chatAsk', methods=['POST'])
-def predict():
-    try:
-        data = request.get_json()
-        result = askChatModel(data['question'])
-
-        # Format the result and return as JSON
-        return jsonify({"result": result})
-    except Exception as e:
-        return jsonify({"error": str(e)})
 
 
 def createCodeGenerator(
@@ -107,9 +85,7 @@ if __name__ == "__main__":
 
     # Define command-line arguments
     parser.add_argument("--ckpt_dir", type=str, required=True, help="Checkpoint directory")
-    parser.add_argument("--ckpt_dir_chat", type=str, required=True, help="Checkpoint directory")
     parser.add_argument("--tokenizer_path", type=str, required=True, help="Tokenizer path")
-    parser.add_argument("--tokenizer_path_chat", type=str, required=True, help="Tokenizer path")
     parser.add_argument("--max_seq_len", type=int, default=256, help="Max sequence length")
     parser.add_argument("--max_batch_size", type=int, default=4, help="Max batch size")
 
@@ -118,13 +94,6 @@ if __name__ == "__main__":
     createCodeGenerator(
         ckpt_dir=args.ckpt_dir,
         tokenizer_path=args.tokenizer_path,
-        max_seq_len=args.max_seq_len,
-        max_batch_size=args.max_batch_size,
-    )
-
-    createChatGenerator(
-        ckpt_dir=args.ckpt_dir_chat,
-        tokenizer_path=args.tokenizer_path_chat,
         max_seq_len=args.max_seq_len,
         max_batch_size=args.max_batch_size,
     )

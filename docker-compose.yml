@@ -1,17 +1,15 @@
 version: '3'
 services:
   flask-app:
-    build: ./
+    build: ./codeLlama/
     container_name: my_cuda_app
     ports:
       - "80:5000"
     network_mode: host
     environment:
       - CODEMODEL=CodeLlama-7b
-      - CHATMODEL=llama-2-7b-chat
     volumes:
       - ./codeLlama/CodeLlama-7b:/app/codeLlama/CodeLlama-7b
-      - ./llama/llama-2-7b-chat:/app/llama/llama-2-7b-chat
     deploy:
       resources:
         reservations:
