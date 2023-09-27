@@ -65,8 +65,7 @@ def createCodeGenerator(
     
 # Define your PyTorch method
 if __name__ == "__main__":
-    app.run( port=5000 )
-
+    
     parser = argparse.ArgumentParser(description="Sample Server Script")
 
     # Define command-line arguments
@@ -83,3 +82,4 @@ if __name__ == "__main__":
         max_seq_len=args.max_seq_len,
         max_batch_size=args.max_batch_size,
     )
+    app.run( port=5000 )
