@@ -5,7 +5,7 @@ from llama import Llama
 import argparse
 
 app = Flask(__name__)
-def askModel(data):
+def askCodeModel(data):
     prompts = [
         # For these prompts, the expected answer is the natural continuation of the prompt
 #         """\
@@ -46,7 +46,7 @@ def predict():
         data = request.get_json()
         print(data['question'])
         # Call your PyTorch method here
-        result = askModel(data['question'])
+        result = askCodeModel(data['question'])
 
         # Format the result and return as JSON
         return jsonify({"result": result})
