@@ -10,7 +10,7 @@ ENV  http_proxy="http://192.168.0.1:8119"
 ENV  https_proxy="http://192.168.0.1:8119"
 ENV  no_proxy="localhost,127.0.0.1,.test"
 
-WORKDIR /app
+WORKDIR /app/codeLlama
 RUN apt-get update && \
     apt-get install -y python3 python3-pip
 COPY . /app/codeLlama/
