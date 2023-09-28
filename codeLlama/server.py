@@ -28,7 +28,7 @@ def askCodeModel(data):
         print(prompt)
         print(f"> {result['generation']}")
         print("\n==================================\n")
-        return print(f"> {result['generation']}")
+    return results[0]['generation']
 
 
 # Define a route to accept POST requests with input data
