@@ -28,7 +28,7 @@ def askCodeModel(data):
     #     print(prompt)
     #     print(f"> {result['generation']}")
     #     print("\n==================================\n")
-    print(results[0]['generation'])
+    
     return results[0]['generation']
 
 
@@ -41,7 +41,7 @@ def predict():
         print(data['question'])
         # Call your PyTorch method here
         result = askCodeModel(data['question'])
-
+        print(result)
         # Format the result and return as JSON
         return jsonify({"result": result})
     except Exception as e:
