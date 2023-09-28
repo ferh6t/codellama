@@ -13,9 +13,9 @@ ENV  no_proxy="localhost,127.0.0.1,.test"
 WORKDIR /app
 RUN apt-get update && \
     apt-get install -y python3 python3-pip
-COPY . /app/
+COPY . /app/codeLlama/
 
-VOLUME ./codeLlama/$CODEMODEL:/app/codeLlama/$CODEMODEL
+VOLUME ./$CODEMODEL:/app/codeLlama/$CODEMODEL
 
 RUN pip install -e .
 
