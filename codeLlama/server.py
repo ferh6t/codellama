@@ -6,8 +6,8 @@ import argparse
 
 app = Flask(__name__)
 max_gen_len: Optional[int] = None,
-temperature = 0.2
-top_p = 0.9
+temperature: float = 0.2
+top_p: float = 0.9
 
 def askCodeModel(data):
     prompts = [
@@ -51,11 +51,8 @@ def predict():
 def createCodeGenerator(
     ckpt_dir: str,
     tokenizer_path: str,
-    temperature: float = 0.2,
-    top_p: float = 0.9,
     max_seq_len: int = 256,
     max_batch_size: int = 4,
-    max_gen_len: Optional[int] = None,
 ):
     global generator
     generator = Llama.build(
