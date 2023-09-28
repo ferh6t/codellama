@@ -7,9 +7,9 @@ services:
       - "80:5000"
     network_mode: host
     environment:
-      - CODEMODEL=CodeLlama-7b
+      - CODEMODEL=CodeLlama-7b-Python
     volumes:
-      - ./codeLlama/CodeLlama-7b:/app/codeLlama/CodeLlama-7b
+      - ./codeLlama/CodeLlama-7b-Python:/app/codeLlama/CodeLlama-7b-Python
     deploy:
       resources:
         reservations:
