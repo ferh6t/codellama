@@ -5,6 +5,10 @@ from llama import Llama
 import argparse
 
 app = Flask(__name__)
+max_gen_len: Optional[int] = None,
+temperature = 0.2
+top_p = 0.9
+
 def askCodeModel(data):
     prompts = [
         # For these prompts, the expected answer is the natural continuation of the prompt
@@ -54,7 +58,6 @@ def createCodeGenerator(
     max_gen_len: Optional[int] = None,
 ):
     global generator
-    print("creating the generator")
     generator = Llama.build(
         ckpt_dir=ckpt_dir,
         tokenizer_path=tokenizer_path,
