@@ -24,10 +24,11 @@ def askCodeModel(data):
         temperature=temperature,
         top_p=top_p,
     )
-    for prompt, result in zip(prompts, results):
-        print(prompt)
-        print(f"> {result['generation']}")
-        print("\n==================================\n")
+    # for prompt, result in zip(prompts, results):
+    #     print(prompt)
+    #     print(f"> {result['generation']}")
+    #     print("\n==================================\n")
+    print(results[0]['generation'])
     return results[0]['generation']
 
 
