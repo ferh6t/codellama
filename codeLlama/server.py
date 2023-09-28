@@ -43,9 +43,9 @@ def predict():
         result = askCodeModel(data['question'])
         print(result)
         # Format the result and return as JSON
-        return jsonify({"result": result})
+        return jsonify({'result': result})
     except Exception as e:
-        return jsonify({"error": str(e)})
+        return jsonify({'error': str(e)})
 
 
 
