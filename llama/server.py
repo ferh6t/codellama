@@ -67,7 +67,7 @@ if __name__ == "__main__":
     # Define command-line arguments
     parser.add_argument("--ckpt_dir", type=str, required=True, help="Checkpoint directory")
     parser.add_argument("--tokenizer_path", type=str, required=True, help="Tokenizer path")
-    parser.add_argument("--max_seq_len", type=int, default=256, help="Max sequence length")
+    parser.add_argument("--max_seq_len", type=int, default=4096, help="Max sequence length")
     parser.add_argument("--max_batch_size", type=int, default=4, help="Max batch size")
 
     args = parser.parse_args()
