@@ -4,6 +4,8 @@ import fire
 from llama import Llama
 import argparse
 
+from llama.llama.generation import Dialog
+
 app = Flask(__name__)
 max_gen_len: int = 4096
 temperature: float = 0.2
@@ -19,6 +21,7 @@ def askChatModel(data):
         temperature=temperature,
         top_p=top_p,
     )
+    print(results)
     # for prompt, result in zip(prompts, results):
     #     print(prompt)
     #     print(f"> {result['generation']}")
