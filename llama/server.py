@@ -5,7 +5,7 @@ from llama import Llama
 import argparse
 
 app = Flask(__name__)
-max_gen_len: Optional[int] = None
+max_gen_len: int = 512
 temperature: float = 0.2
 top_p: float = 0.9
 
