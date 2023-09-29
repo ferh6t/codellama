@@ -1,15 +1,30 @@
 version: '3'
 services:
-  flask-app:
-    build: ./codeLlama/
-    container_name: my_cuda_app
-    ports:
-      - "80:5000"
+  # flask-app:
+  #   build: ./codeLlama/
+  #   container_name: code_llama_app
+  #   ports:
+  #     - "80:5000"
+  #   network_mode: host
+  #   environment:
+  #     - CODEMODEL=CodeLlama-7b-Python
+  #   volumes:
+  #     - ./codeLlama/CodeLlama-7b-Python:/app/codeLlama/CodeLlama-7b-Python
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #         - driver: nvidia
+  #           device_ids: ['0']
+  #           capabilities: [gpu]
+  chat-app:
+    build: ./llama/
+    container_name: llama_app
     network_mode: host
     environment:
-      - CODEMODEL=CodeLlama-7b-Python
+      - CHATMODEL=llama-2-7b-chat
     volumes:
-      - ./codeLlama/CodeLlama-7b-Python:/app/codeLlama/CodeLlama-7b-Python
+      - ./codeLlama/llama-2-7b-chat:/app/codeLlama/llama-2-7b-chat
     deploy:
       resources:
         reservations:

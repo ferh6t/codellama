@@ -10,16 +10,11 @@ temperature: float = 0.2
 top_p: float = 0.9
 
 def askCodeModel(data):
-    prompts = [
-        # For these prompts, the expected answer is the natural continuation of the prompt
-#         """\
-# import socket
-
-# def ping_exponential_backoff(host: str):""",
-        data
+    dialogs: List[Dialog] = [
+        [{"role": "user", "content": data}]        
     ]
-    results = generator.text_completion(
-        prompts,
+    results = generator.chat_completion(
+        dialogs,
         max_gen_len=max_gen_len,
         temperature=temperature,
         top_p=top_p,
@@ -33,8 +28,8 @@ def askCodeModel(data):
 
 
 # Define a route to accept POST requests with input data
-@app.route('/predict', methods=['POST'])
-def predict():
+@app.route('/chat', methods=['POST'])
+def chat():
     try:
         # Extract input data from the request
         data = request.get_json()
@@ -49,7 +44,7 @@ def predict():
 
 
 
-def createCodeGenerator(
+def createChatGenerator(
     ckpt_dir: str,
     tokenizer_path: str,
     max_seq_len: int = 256,
@@ -77,11 +72,11 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    createCodeGenerator(
+    createChatGenerator(
         ckpt_dir=args.ckpt_dir,
         tokenizer_path=args.tokenizer_path,
         max_seq_len=args.max_seq_len,
         max_batch_size=args.max_batch_size,
     )
-    app.run( port=5000 )
+    app.run( port=5001 )
 
