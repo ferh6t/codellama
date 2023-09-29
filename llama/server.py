@@ -20,22 +20,7 @@ You are a helpful, respectful and honest assistant. Always answer as helpfully a
 If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.""",
             },
             {"role": "user", "content": "Write a brief birthday message to John"}, 
-        ],
-#             {
-#                 "role": "system",
-#                 "content": """
-#   You are a database administrator on a software company. You are responsible for finding correct chart with your database cloumns. The Columns you have are:
-#   Infrastructure monitoring: time | cpu | gpu | mem | network | disk
-#   Process monitoring: time | process id | cpu | gpu | mem | network | disk
-#   App metrics: time | service name | latency | throughput | error rate
-
-#   System logs: time | log level | subsystem | text
-#   App logs: time | log level | thread id | component | text
-#   You will be giving advice to create a chart to answer user's need. 
-#   """,
-#             },
-#             {"role": "user", "content": data},
-#         ]        
+        ],       
     ]
     results = generator.chat_completion(
         dialogs,
