@@ -26,5 +26,5 @@ RUN echo '#!/bin/sh' > /app/llama/entrypoint.sh && \
     chmod +x /app/llama/entrypoint.sh
 
 # Set the entrypoint and default command
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/app/llama/entrypoint.sh"]
 CMD []
