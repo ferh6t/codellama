@@ -5,11 +5,11 @@ from llama import Llama
 import argparse
 
 app = Flask(__name__)
-max_gen_len: int = 512
+max_gen_len: int = 4096
 temperature: float = 0.2
 top_p: float = 0.9
 
-def askCodeModel(data):
+def askChatModel(data):
     dialogs: List[Dialog] = [
         [{"role": "user", "content": data}]        
     ]
@@ -35,7 +35,7 @@ def chat():
         data = request.get_json()
         print(data['question'])
         # Call your PyTorch method here
-        result = askCodeModel(data['question'])
+        result = askChatModel(data['question'])
         print(result)
         # Format the result and return as JSON
         return jsonify(result)
@@ -47,7 +47,7 @@ def chat():
 def createChatGenerator(
     ckpt_dir: str,
     tokenizer_path: str,
-    max_seq_len: int = 256,
+    max_seq_len: int = 4096,
     max_batch_size: int = 4,
 ):
     global generator
