@@ -22,7 +22,7 @@ RUN pip install -e .
 EXPOSE 5000
 
 RUN echo '#!/bin/sh' > /app/llama/entrypoint.sh && \
-    echo 'torchrun --nproc_per_node 1 server.py --ckpt_dir /app/llama/ --tokenizer_path /app/llama/tokenizer.model --max_seq_len 128 --max_batch_size 4' >> /app/llama/entrypoint.sh && \
+    echo 'torchrun --nproc_per_node 1 server.py --ckpt_dir /app/llama/$CHATMODEL/ --tokenizer_path /app/llama/tokenizer.model --max_seq_len 128 --max_batch_size 4' >> /app/llama/entrypoint.sh && \
     chmod +x /app/llama/entrypoint.sh
 
 # Set the entrypoint and default command
