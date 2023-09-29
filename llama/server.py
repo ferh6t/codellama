@@ -11,7 +11,20 @@ top_p: float = 0.9
 
 def askChatModel(data):
     dialogs: List[Dialog] = [
-        [{"role": "user", "content": data}]        
+        [{
+                "role": "system",
+                "content": """\
+You are a database administrator on a software company. You are responsible for finding correct chart with your database cloumns. The Columns you have are:
+  Infrastructure monitoring: time | cpu | gpu | mem | network | disk
+  Process monitoring: time | process id | cpu | gpu | mem | network | disk
+  App metrics: time | service name | latency | throughput | error rate
+
+  System logs: time | log level | subsystem | text
+  App logs: time | log level | thread id | component | text
+  You will be giving advice to create a chart to answer user's need. 
+  """,
+            },
+            {"role": "user", "content": "Write a brief birthday message to John"},]        
     ]
     results = generator.chat_completion(
         dialogs,
@@ -49,7 +62,7 @@ def createChatGenerator(
     ckpt_dir: str,
     tokenizer_path: str,
     max_seq_len: int = 4096,
-    max_batch_size: int = 64,
+    max_batch_size: int = 4096,
 ):
     global generator
     generator = Llama.build(
