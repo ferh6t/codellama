@@ -24,7 +24,7 @@ You are a database administrator on a software company. You are responsible for 
   You will be giving advice to create a chart to answer user's need. 
   """,
             },
-            {"role": "user", "content": "Write a brief birthday message to John"},]        
+            {"role": "user", "content": data},]        
     ]
     results = generator.chat_completion(
         dialogs,
