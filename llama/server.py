@@ -49,7 +49,7 @@ def createChatGenerator(
     ckpt_dir: str,
     tokenizer_path: str,
     max_seq_len: int = 4096,
-    max_batch_size: int = 4,
+    max_batch_size: int = 64,
 ):
     global generator
     generator = Llama.build(
