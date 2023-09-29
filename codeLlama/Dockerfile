@@ -21,10 +21,10 @@ RUN pip install -e .
 
 EXPOSE 5000
 
-RUN echo '#!/bin/sh' > /app/entrypoint.sh && \
-    echo 'torchrun --nproc_per_node 1 server.py --ckpt_dir /app/codeLlama/$CODEMODEL/ --tokenizer_path /app/codeLlama/$CODEMODEL/tokenizer.model --max_seq_len 128 --max_batch_size 4' >> /app/entrypoint.sh && \
-    chmod +x /app/entrypoint.sh
+RUN echo '#!/bin/sh' > /app/codeLlama/entrypoint.sh && \
+    echo 'torchrun --nproc_per_node 1 server.py --ckpt_dir /app/codeLlama/$CODEMODEL/ --tokenizer_path /app/codeLlama/$CODEMODEL/tokenizer.model --max_seq_len 128 --max_batch_size 4' >> /app/codeLlama/entrypoint.sh && \
+    chmod +x /app/codeLlama/entrypoint.sh
 
 # Set the entrypoint and default command
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/app/codeLlama/entrypoint.sh"]
 CMD []
