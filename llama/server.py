@@ -11,7 +11,13 @@ top_p: float = 0.9
 
 def askChatModel(data):
     dialogs: List[Dialog] = [
-        [{"role": "user", "content": data}]        
+        [
+            {
+                "role": "system",
+                "content": "Always answer with emojis",
+            },
+            {"role": "user", "content": "How to go from Beijing to NY?"},
+        ]        
     ]
     results = generator.chat_completion(
         dialogs,
